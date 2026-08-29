@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teman Transindo - Sewa Hiace & Paket Tour Terpercaya</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        gold: { 400: '#FBBF24', 500: '#F59E0B', 600: '#D97706', 700: '#B45309' },
+                        dark: { 900: '#0B0F19', 800: '#141B2B', 700: '#1E293B', 600: '#334155' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-panel {
+            background: rgba(20, 27, 43, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(245, 158, 11, 0.15);
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(245, 158, 11, 0.08);
+        }
+        .glow-gold {
+            text-shadow: 0 0 40px rgba(245, 158, 11, 0.15);
+        }
+        .bg-hero-pattern {
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(245, 158, 11, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(245, 158, 11, 0.05) 0%, transparent 50%),
+                linear-gradient(180deg, #0B0F19 0%, #141B2B 100%);
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #F59E0B, #FBBF24);
+            margin: 12px auto 0;
+            border-radius: 4px;
+        }
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(245, 158, 11, 0.4);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+        .faq-item summary {
+            list-style: none;
+            cursor: pointer;
+        }
+        .faq-item summary .icon-chevron {
+            transition: transform 0.3s ease;
+        }
+        .faq-item[open] summary .icon-chevron {
+            transform: rotate(180deg);
+        }
+        .armada-card {
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .armada-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            border-color: rgba(245, 158, 11, 0.5);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+        /* Admin modal overlay */
+        .admin-modal-overlay {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(6px);
+        }
+        .admin-modal-content {
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        /* Hide scrollbar for clean look */
+        .admin-modal-content::-webkit-scrollbar {
+            width: 6px;
+        }
+        .admin-modal-content::-webkit-scrollbar-track {
+            background: #1E293B;
+        }
+        .admin-modal-content::-webkit-scrollbar-thumb {
+            background: #F59E0B;
+            border-radius: 8px;
+        }
+        .admin-trigger {
+            cursor: pointer;
+            user-select: none;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .status-tersedia {
+            background: #22c55e30;
+            color: #22c55e;
+        }
+        .status-terbatas {
+            background: #eab30830;
+            color: #eab308;
+        }
+        .status-penuh {
+            background: #ef444430;
+            color: #ef4444;
+        }
+    </style>
+</head>
+<body class="bg-dark-900 text-gray-200 font-sans antialiased overflow-x-hidden">
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="fixed w-full z-50 glass-panel border-b border-gold-500/10 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo with admin trigger -->
+                <div class="flex-shrink-0 flex items-center gap-2 admin-trigger" id="adminTrigger" title="Klik 5 kali untuk admin">
+                    <div class="text-gold-500 text-3xl font-extrabold italic tracking-tighter">TT</div>
+                    <div class="text-xl font-bold text-white">Teman <span class="text-gold-500">Transindo</span></div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#home" class="text-gold-500 hover:text-gold-400 font-semibold transition text-sm">Home</a>
+                    <a href="#armada" class="text-gray-300 hover:text-white transition text-sm">Armada</a>
+                    <a href="#layanan" class="text-gray-300 hover:text-white transition text-sm">Layanan</a>
+                    <a href="#paket" class="text-gray-300 hover:text-white transition text-sm">Paket Wisata</a>
+                    <a href="#testimoni" class="text-gray-300 hover:text-white transition text-sm">Testimoni</a>
+                    <a href="#faq" class="text-gray-300 hover:text-white transition text-sm">FAQ</a>
+                    <a href="#kontak" class="text-gray-300 hover:text-white transition text-sm">Kontak</a>
+                </div>
+
+                <!-- Right side: social + WA -->
+                <div class="hidden lg:flex items-center gap-4">
+                    <a href="#" class="text-gray-400 hover:text-gold-500 transition text-lg"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-gold-500 transition text-lg"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-gold-500 transition text-lg"><i class="fa-brands fa-youtube"></i></a>
+                    <div class="h-6 w-px bg-gray-700 mx-1"></div>
+                    <a href="https://wa.me/6281234567890" target="_blank" class="bg-green-600 hover:bg-green-500 text-white px-5 py-2.5 rounded-full font-semibold flex items-center gap-2 transition transform hover:scale-105 shadow-lg shadow-green-900/40 text-sm">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> Chat WA
+                    </a>
+                </div>
+
+                <!-- Mobile toggle -->
+                <button id="mobileMenuBtn" class="lg:hidden text-gray-300 hover:text-gold-500 text-2xl transition">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="lg:hidden hidden pb-4 pt-2 border-t border-gray-700/50 mt-2">
+                <div class="flex flex-col space-y-3 text-center">
+                    <a href="#home" class="text-gold-500 hover:text-gold-400 font-semibold transition">Home</a>
+                    <a href="#armada" class="text-gray-300 hover:text-white transition">Armada</a>
+                    <a href="#layanan" class="text-gray-300 hover:text-white transition">Layanan</a>
+                    <a href="#paket" class="text-gray-300 hover:text-white transition">Paket Wisata</a>
+                    <a href="#testimoni" class="text-gray-300 hover:text-white transition">Testimoni</a>
+                    <a href="#faq" class="text-gray-300 hover:text-white transition">FAQ</a>
+                    <a href="#kontak" class="text-gray-300 hover:text-white transition">Kontak</a>
+                    <div class="flex justify-center gap-4 pt-2">
+                        <a href="#" class="text-gray-400 hover:text-gold-500 transition"><i class="fa-brands fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-gold-500 transition"><i class="fa-brands fa-tiktok text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-gold-500 transition"><i class="fa-brands fa-youtube text-xl"></i></a>
+                    </div>
+                    <a href="https://wa.me/6281234567890" target="_blank" class="bg-green-600 hover:bg-green-500 text-white px-6 py-3 rounded-full font-semibold flex items-center justify-center gap-2 transition mx-auto w-48">
+                        <i class="fa-brands fa-whatsapp text-xl"></i> Chat WA
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section id="home" class="relative min-h-screen flex items-center overflow-hidden pt-20 bg-hero-pattern">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2069&auto=format&fit=crop" alt="Hiace background" class="w-full h-full object-cover opacity-20" />
+            <div class="absolute inset-0 bg-gradient-to-r from-dark-900 via-dark-900/80 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent"></div>
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="inline-flex items-center gap-2 bg-dark-800/80 border border-gold-500/30 text-gold-400 px-4 py-2 rounded-full text-sm font-semibold mb-6 backdrop-blur-sm">
+                        <i class="fa-solid fa-car"></i> Rental Hiace + Paket Tour Cilegon
+                    </div>
+                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] mb-6 glow-gold">
+                        Perjalanan <br /><span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-yellow-200">Tanpa Stress</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-400 leading-relaxed mb-8 max-w-lg">
+                        Pesan Toyota Hiace premium dan nikmati perjalanan wisata & acara Anda dengan pelayanan prima, driver profesional, dan armada terbaik.
+                    </p>
+                    <div class="flex flex-wrap gap-4 mb-10">
+                        <a href="#jadwal" class="bg-gradient-to-r from-gold-600 to-gold-500 hover:from-gold-500 hover:to-gold-400 text-dark-900 px-8 py-4 rounded-xl font-bold transition transform hover:-translate-y-1 shadow-lg shadow-gold-500/25 flex items-center gap-2">
+                            <i class="fa-solid fa-calendar-check"></i> CEK ARMADA
+                        </a>
+                        <a href="https://wa.me/6281234567890" class="glass-panel text-white hover:bg-dark-700/70 px-8 py-4 rounded-xl font-bold transition flex items-center gap-2 border border-gray-700/50">
+                            <i class="fa-brands fa-whatsapp text-gold-500"></i> HUBUNGI KAMI
+                        </a>
+                    </div>
+                    <div class="grid grid-cols-3 gap-4 md:gap-8 max-w-lg border-t border-gray-800/60 pt-8">
+                        <div>
+                            <div class="stat-number font-extrabold text-gold-500 text-4xl md:text-6xl">6,001+</div>
+                            <div class="text-sm text-gray-400">Trip Sukses</div>
+                        </div>
+                        <div>
+                            <div class="stat-number font-extrabold text-gold-500 text-4xl md:text-6xl">3,560</div>
+                            <div class="text-sm text-gray-400">Trip Hari Ini</div>
+                        </div>
+                        <div>
+                            <div class="stat-number font-extrabold text-gold-500 text-4xl md:text-6xl">720</div>
+                            <div class="text-sm text-gray-400">Trip Besok</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden lg:flex justify-center items-center relative">
+                    <div class="relative w-full max-w-md animated-float-slow">
+                        <div class="absolute -top-6 -left-6 w-32 h-32 bg-gold-500/10 rounded-full blur-3xl"></div>
+                        <div class="absolute -bottom-6 -right-6 w-40 h-40 bg-gold-500/5 rounded-full blur-3xl"></div>
+                        <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=1964&auto=format&fit=crop" alt="Toyota Hiace" class="rounded-2xl shadow-2xl border border-gold-500/20 object-cover w-full h-[320px] object-center" />
+                        <div class="absolute -bottom-4 -right-4 bg-dark-800/90 backdrop-blur-sm border border-gold-500/20 rounded-xl px-5 py-3 shadow-xl">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-star text-gold-500"></i>
+                                <span class="font-bold text-white">4.9/5</span>
+                                <span class="text-gray-400 text-sm">• 1,200+ ulasan</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ARMADA ===== -->
+    <section id="armada" class="py-20 bg-dark-800 relative border-t border-gray-700/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-14">
+                <span class="text-gold-500 font-semibold text-sm tracking-widest uppercase">Armada Premium</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mt-2 section-title">Pilihan Unit <span class="text-gold-500">Terbaik</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto mt-4">Kami menyediakan Toyota Hiace terbaru dengan kondisi prima, siap menemani perjalanan Anda.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6" id="armadaContainer">
+                <!-- Card 1: Premium -->
+                <div class="armada-card glass-card rounded-2xl p-6 border border-gray-700/40" data-armada-id="premium">
+                    <div class="relative h-48 rounded-xl overflow-hidden mb-4">
+                        <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=1964&auto=format&fit=crop" alt="Hiace Premium" class="w-full h-full object-cover armada-img" />
+                        <span class="absolute top-3 right-3 bg-gold-500 text-dark-900 text-xs font-bold px-3 py-1 rounded-full">POPULER</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Hiace Premium</h3>
+                    <p class="text-gray-400 text-sm mt-1">Kapasitas 12 penumpang • AC double blower</p>
+                    <div class="flex items-center gap-2 mt-3 text-sm text-gray-300">
+                        <i class="fa-solid fa-check-circle text-gold-500"></i> TV & Karaoke
+                        <span class="mx-1 text-gray-600">|</span>
+                        <i class="fa-solid fa-check-circle text-gold-500"></i> USB Charger
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-gray-700/50 flex justify-between items-center">
+                        <span class="text-gold-500 font-bold text-lg">Rp 1.200.000</span>
+                        <span class="text-gray-500 text-sm">/ 12 jam</span>
+                    </div>
+                </div>
+
+                <!-- Card 2: Executive -->
+                <div class="armada-card glass-card rounded-2xl p-6 border border-gray-700/40" data-armada-id="executive">
+                    <div class="relative h-48 rounded-xl overflow-hidden mb-4">
+                        <img src="https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?q=80&w=2069&auto=format&fit=crop" alt="Hiace Executive" class="w-full h-full object-cover armada-img" />
+                        <span class="absolute top-3 right-3 bg-gold-500 text-dark-900 text-xs font-bold px-3 py-1 rounded-full">EXECUTIVE</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Hiace Executive</h3>
+                    <p class="text-gray-400 text-sm mt-1">Kapasitas 8 penumpang • Kursi VIP</p>
+                    <div class="flex items-center gap-2 mt-3 text-sm text-gray-300">
+                        <i class="fa-solid fa-check-circle text-gold-500"></i> Kursi Reclining
+                        <span class="mx-1 text-gray-600">|</span>
+                        <i class="fa-solid fa-check-circle text-gold-500"></i> Wi-Fi
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-gray-700/50 flex justify-between items-center">
+                        <span class="text-gold-500 font-bold text-lg">Rp 1.500.000</span>
+                        <span class="text-gray-500 text-sm">/ 12 jam</span>
+                    </div>
+                </div>
+
+                <!-- Card 3: Touring -->
+                <div class="armada-card glass-card rounded-2xl p-6 border border-gray-700/40" data-armada-id="touring">
+                    <div class="relative h-48 rounded-xl overflow-hidden mb-4">
+                        <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=2070&auto=format&fit=crop" alt="Hiace Touring" class="w-full h-full object-cover armada-img" />
+                        <span class="absolute top-3 right-3 bg-gold-500 text-dark-900 text-xs font-bold px-3 py-1 rounded-full">TOURING</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Hiace Touring</h3>
+                    <p class="text-gray-400 text-sm mt-1">Kapasitas 14 penumpang • Bagasi luas</p>
+                    <div class="flex items-center gap-2 mt-3 text-sm text-gray-300">
+                        <i class="fa-solid fa-check-circle text-gold-500"></i> Roof Rack
+                        <span class="mx-1 text-gray-600">|</span>
+                        <i class="fa-solid fa-check-circle text-gold-500"></i> Pendingin
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-gray-700/50 flex justify-between items-center">
+                        <span class="text-gold-500 font-bold text-lg">Rp 1.100.000</span>
+                        <span class="text-gray-500 text-sm">/ 12 jam</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== JADWAL ===== -->
+    <section id="jadwal" class="py-20 bg-dark-900 relative border-t border-gray-700/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-14">
+                <span class="text-gold-500 font-semibold text-sm tracking-widest uppercase">Ketersediaan</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mt-2 section-title">Jadwal <span class="text-gold-500">Unit Hiace</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto mt-4">Cek ketersediaan armada secara real-time sebelum booking.</p>
+            </div>
+
+            <div class="bg-dark-800/80 rounded-2xl p-6 md:p-10 border border-gray-700/50 shadow-2xl max-w-5xl mx-auto backdrop-blur-sm">
+                <div class="flex flex-wrap justify-between items-center mb-6 gap-4">
+                    <button id="prevMonth" class="p-3 text-gray-400 hover:text-gold-500 transition bg-dark-700/50 rounded-xl"><i class="fa-solid fa-chevron-left text-lg"></i></button>
+                    <h3 id="monthYearDisplay" class="text-2xl md:text-3xl font-extrabold text-white uppercase tracking-wider">AGUSTUS 2026</h3>
+                    <button id="nextMonth" class="p-3 text-gray-400 hover:text-gold-500 transition bg-dark-700/50 rounded-xl"><i class="fa-solid fa-chevron-right text-lg"></i></button>
+                </div>
+
+                <div class="flex flex-wrap gap-4 mb-8 text-sm text-gray-300 justify-center">
+                    <div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-green-500 shadow-[0_0_12px_rgba(34,197,94,0.5)]"></span> Tersedia (&gt;3 Unit)</div>
+                    <div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-yellow-500 shadow-[0_0_12px_rgba(234,179,8,0.5)]"></span> Terbatas (1-2 Unit)</div>
+                    <div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-red-500 shadow-[0_0_12px_rgba(239,68,68,0.5)]"></span> Penuh / Booked</div>
+                </div>
+
+                <div class="w-full">
+                    <div class="grid grid-cols-7 gap-1 md:gap-3 mb-3 text-center text-gray-400 font-semibold text-xs md:text-sm uppercase tracking-wide">
+                        <div>Min</div><div>Sen</div><div>Sel</div><div>Rab</div><div>Kam</div><div>Jum</div><div>Sab</div>
+                    </div>
+                    <div id="calendarGrid" class="grid grid-cols-7 gap-1 md:gap-3 text-center">
+                        <!-- JS renders -->
+                    </div>
+                </div>
+
+                <div class="mt-8 text-center bg-dark-700/50 p-4 rounded-xl border border-gray-700/40 text-sm text-gray-400 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-circle-info text-gold-500"></i> Jadwal dikelola langsung oleh admin. Untuk hari "Terbatas", segera hubungi kami.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== LAYANAN ===== -->
+    <section id="layanan" class="py-20 bg-dark-800 relative border-t border-gray-700/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-14">
+                <span class="text-gold-500 font-semibold text-sm tracking-widest uppercase">Layanan Kami</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mt-2 section-title">Kenapa Harus <span class="text-gold-500">Kami?</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto mt-4">Kami berkomitmen memberikan pengalaman perjalanan terbaik dengan layanan premium.</p>
+            </div>
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="glass-card rounded-2xl p-6 text-center border border-gray-700/40 hover:border-gold-500/30 transition group">
+                    <div class="w-16 h-16 mx-auto bg-gold-500/10 rounded-2xl flex items-center justify-center text-gold-500 text-3xl group-hover:scale-110 transition">🚐</div>
+                    <h4 class="text-lg font-bold text-white mt-4">Armada Premium</h4>
+                    <p class="text-gray-400 text-sm mt-2">Toyota Hiace terbaru dengan perawatan rutin dan kondisi prima.</p>
+                </div>
+                <div class="glass-card rounded-2xl p-6 text-center border border-gray-700/40 hover:border-gold-500/30 transition group">
+                    <div class="w-16 h-16 mx-auto bg-gold-500/10 rounded-2xl flex items-center justify-center text-gold-500 text-3xl group-hover:scale-110 transition">👨‍✈️</div>
+                    <h4 class="text-lg font-bold text-white mt-4">Driver Profesional</h4>
+                    <p class="text-gray-400 text-sm mt-2">Sopir berpengalaman, ramah, dan menguasai rute wisata.</p>
+                </div>
+                <div class="glass-card rounded-2xl p-6 text-center border border-gray-700/40 hover:border-gold-500/30 transition group">
+                    <div class="w-16 h-16 mx-auto bg-gold-500/10 rounded-2xl flex items-center justify-center text-gold-500 text-3xl group-hover:scale-110 transition">🛡️</div>
+                    <h4 class="text-lg font-bold text-white mt-4">Asuransi Perjalanan</h4>
+                    <p class="text-gray-400 text-sm mt-2">Perjalanan aman dan terlindungi dengan asuransi komprehensif.</p>
+                </div>
+                <div class="glass-card rounded-2xl p-6 text-center border border-gray-700/40 hover:border-gold-500/30 transition group">
+                    <div class="w-16 h-16 mx-auto bg-gold-500/10 rounded-2xl flex items-center justify-center text-gold-500 text-3xl group-hover:scale-110 transition">⏱️</div>
+                    <h4 class="text-lg font-bold text-white mt-4">Tepat Waktu</h4>
+                    <p class="text-gray-400 text-sm mt-2">Komitmen ketepatan waktu untuk kenyamanan perjalanan Anda.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PAKET WISATA ===== -->
+    <section id="paket" class="py-20 bg-dark-900 relative border-t border-gray-700/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-14">
+                <span class="text-gold-500 font-semibold text-sm tracking-widest uppercase">Paket Wisata</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mt-2 section-title">Pilihan <span class="text-gold-500">Paket Tour</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto mt-4">Nikmati pengalaman wisata tanpa repot dengan paket all-inclusive dari Teman Transindo.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <div class="glass-card rounded-2xl p-6 border border-gray-700/40 text-center hover:border-gold-500/30 transition">
+                    <div class="text-4xl mb-3">🏖️</div>
+                    <h4 class="text-xl font-bold text-white">Paket Anyer</h4>
+                    <p class="text-gray-400 text-sm mt-2">Wisata pantai Anyer + Carita. Include transportasi, tiket, dan makan siang.</p>
+                    <div class="mt-4 text-gold-500 font-bold text-2xl">Rp 350K</div>
+                    <div class="text-gray-500 text-xs">/ orang (min 6 pax)</div>
+                    <a href="https://wa.me/6281234567890" class="mt-4 inline-block bg-gold-500/20 text-gold-400 hover:bg-gold-500 hover:text-dark-900 px-6 py-2 rounded-full font-semibold text-sm transition">Pesan Sekarang</a>
+                </div>
+                <div class="glass-card rounded-2xl p-6 border border-gold-500/30 text-center hover:border-gold-500/50 transition relative overflow-hidden">
+                    <span class="absolute top-3 right-3 bg-gold-500 text-dark-900 text-xs font-bold px-3 py-1 rounded-full">BEST SELLER</span>
+                    <div class="text-4xl mb-3">🌋</div>
+                    <h4 class="text-xl font-bold text-white">Paket Krakatau</h4>
+                    <p class="text-gray-400 text-sm mt-2">Eksplorasi Gunung Krakatau + snorkeling. Include transportasi, guide, dan peralatan.</p>
+                    <div class="mt-4 text-gold-500 font-bold text-2xl">Rp 550K</div>
+                    <div class="text-gray-500 text-xs">/ orang (min 4 pax)</div>
+                    <a href="https://wa.me/6281234567890" class="mt-4 inline-block bg-gold-500 text-dark-900 hover:bg-gold-400 px-6 py-2 rounded-full font-semibold text-sm transition">Pesan Sekarang</a>
+                </div>
+                <div class="glass-card rounded-2xl p-6 border border-gray-700/40 text-center hover:border-gold-500/30 transition">
+                    <div class="text-4xl mb-3">⛰️</div>
+                    <h4 class="text-xl font-bold text-white">Paket Baduy</h4>
+                    <p class="text-gray-400 text-sm mt-2">Trekking dan budaya Suku Baduy. Include transportasi, guide lokal, dan makan.</p>
+                    <div class="mt-4 text-gold-500 font-bold text-2xl">Rp 480K</div>
+                    <div class="text-gray-500 text-xs">/ orang (min 5 pax)</div>
+                    <a href="https://wa.me/6281234567890" class="mt-4 inline-block bg-gold-500/20 text-gold-400 hover:bg-gold-500 hover:text-dark-900 px-6 py-2 rounded-full font-semibold text-sm transition">Pesan Sekarang</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TESTIMONI ===== -->
+    <section id="testimoni" class="py-20 bg-dark-800 relative border-t border-gray-700/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-14">
+                <span class="text-gold-500 font-semibold text-sm tracking-widest uppercase">Testimoni</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mt-2 section-title">Apa Kata <span class="text-gold-500">Pelanggan?</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto mt-4">Pengalaman nyata dari pelanggan yang telah menggunakan layanan kami.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <div class="testimonial-card glass-card rounded-2xl p-6 border border-gray-700/40">
+                    <div class="flex items-center gap-1 text-gold-500 mb-3"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="text-gray-300 text-sm italic">"Armada bersih, sopir ramah dan profesional. Perjalanan ke Anyer jadi sangat nyaman. Rekomendasi banget!"</p>
+                    <div class="mt-4 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gold-500/20 flex items-center justify-center text-gold-500 font-bold">A</div>
+                        <div><p class="text-white font-semibold text-sm">Andi Wijaya</p><p class="text-gray-500 text-xs">Wisata Anyer, 2026</p></div>
+                    </div>
+                </div>
+                <div class="testimonial-card glass-card rounded-2xl p-6 border border-gray-700/40">
+                    <div class="flex items-center gap-1 text-gold-500 mb-3"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="text-gray-300 text-sm italic">"Paket Krakatau keren abis! Guide nya berpengalaman, transportasi aman dan nyaman. Pasti pakai lagi."</p>
+                    <div class="mt-4 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gold-500/20 flex items-center justify-center text-gold-500 font-bold">S</div>
+                        <div><p class="text-white font-semibold text-sm">Siti Rahma</p><p class="text-gray-500 text-xs">Paket Krakatau, 2026</p></div>
+                    </div>
+                </div>
+                <div class="testimonial-card glass-card rounded-2xl p-6 border border-gray-700/40">
+                    <div class="flex items-center gap-1 text-gold-500 mb-3"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="text-gray-300 text-sm italic">"Acara kantor ke Baduy terorganisir dengan baik. Hiace premium membuat perjalanan jauh terasa ringan."</p>
+                    <div class="mt-4 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gold-500/20 flex items-center justify-center text-gold-500 font-bold">B</div>
+                        <div><p class="text-white font-semibold text-sm">Budi Santoso</p><p class="text-gray-500 text-xs">Corporate Trip, 2026</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section id="faq" class="py-20 bg-dark-900 relative border-t border-gray-700/50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-14">
+                <span class="text-gold-500 font-semibold text-sm tracking-widest uppercase">FAQ</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mt-2 section-title">Pertanyaan <span class="text-gold-500">Umum</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto mt-4">Temukan jawaban atas pertanyaan yang sering diajukan tentang layanan kami.</p>
+            </div>
+            <div class="space-y-4">
+                <details class="faq-item glass-card rounded-xl p-5 border border-gray-700/40">
+                    <summary class="flex justify-between items-center text-white font-semibold text-lg">
+                        <span>Bagaimana cara booking Hiace?</span>
+                        <span class="icon-chevron text-gold-500"><i class="fa-solid fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="text-gray-400 mt-3 pl-1">Anda bisa booking melalui WhatsApp kami di +62 812-3456-7890 atau langsung mengisi form booking di website. Tim kami akan merespon dalam waktu 15 menit.</p>
+                </details>
+                <details class="faq-item glass-card rounded-xl p-5 border border-gray-700/40">
+                    <summary class="flex justify-between items-center text-white font-semibold text-lg">
+                        <span>Apakah ada biaya tambahan?</span>
+                        <span class="icon-chevron text-gold-500"><i class="fa-solid fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="text-gray-400 mt-3 pl-1">Harga sudah termasuk BBM, driver, dan asuransi dasar. Biaya tambahan hanya untuk tol, parkir, dan tiket wisata (sesuai paket).</p>
+                </details>
+                <details class="faq-item glass-card rounded-xl p-5 border border-gray-700/40">
+                    <summary class="flex justify-between items-center text-white font-semibold text-lg">
+                        <span>Berapa lama durasi sewa?</span>
+                        <span class="icon-chevron text-gold-500"><i class="fa-solid fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="text-gray-400 mt-3 pl-1">Durasi sewa fleksibel mulai dari 6 jam, 12 jam, hingga harian (24 jam). Untuk paket wisata biasanya 1-3 hari sesuai itinerary.</p>
+                </details>
+                <details class="faq-item glass-card rounded-xl p-5 border border-gray-700/40">
+                    <summary class="flex justify-between items-center text-white font-semibold text-lg">
+                        <span>Apakah driver menguasai rute wisata?</span>
+                        <span class="icon-chevron text-gold-500"><i class="fa-solid fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="text-gray-400 mt-3 pl-1">Ya, semua driver Teman Transindo adalah profesional yang sudah berpengalaman dan menguasai rute-rute wisata di Banten, Jakarta, dan Jawa Barat.</p>
+                </details>
+                <details class="faq-item glass-card rounded-xl p-5 border border-gray-700/40">
+                    <summary class="flex justify-between items-center text-white font-semibold text-lg">
+                        <span>Bagaimana jika terjadi pembatalan?</span>
+                        <span class="icon-chevron text-gold-500"><i class="fa-solid fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="text-gray-400 mt-3 pl-1">Pembatalan dapat dilakukan maksimal H-2 dengan pengembalian 75% dari total biaya. Untuk pembatalan H-1, pengembalian 50%.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== KONTAK / CTA ===== -->
+    <section id="kontak" class="py-20 bg-dark-800 relative border-t border-gray-700/50">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="glass-panel rounded-3xl p-10 md:p-16 border border-gold-500/20 relative overflow-hidden">
+                <div class="absolute -top-20 -right-20 w-64 h-64 bg-gold-500/5 rounded-full blur-3xl"></div>
+                <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-gold-500/5 rounded-full blur-3xl"></div>
+                <span class="text-gold-500 font-semibold text-sm tracking-widest uppercase">Siap Berpetualang?</span>
+                <h3 class="text-3xl md:text-5xl font-extrabold text-white mt-3">Pesan Sekarang & <br class="sm:hidden" /><span class="text-gold-500">Nikmati Perjalanan</span></h3>
+                <p class="text-gray-400 max-w-xl mx-auto mt-4">Hubungi kami sekarang dan dapatkan penawaran terbaik untuk perjalanan Anda.</p>
+                <div class="flex flex-wrap justify-center gap-4 mt-8">
+                    <a href="https://wa.me/6281234567890" target="_blank" class="bg-green-600 hover:bg-green-500 text-white px-10 py-4 rounded-xl font-bold transition transform hover:scale-105 shadow-lg shadow-green-900/40 flex items-center gap-3 text-lg">
+                        <i class="fa-brands fa-whatsapp text-2xl"></i> Chat WhatsApp
+                    </a>
+                    <a href="mailto:temantransindo@gmail.com" class="glass-panel text-white hover:bg-dark-700/70 px-10 py-4 rounded-xl font-bold transition flex items-center gap-3 border border-gray-700/50 text-lg">
+                        <i class="fa-solid fa-envelope text-gold-500"></i> Email Kami
+                    </a>
+                </div>
+                <div class="flex flex-wrap justify-center gap-6 mt-8 text-gray-400 text-sm">
+                    <span><i class="fa-solid fa-phone text-gold-500 mr-2"></i> +62 812-3456-7890</span>
+                    <span><i class="fa-solid fa-location-dot text-gold-500 mr-2"></i> Jl. Raya Cilegon No. 123, Banten</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="bg-dark-900 border-t border-gray-800 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-10 mb-12">
+                <div class="md:col-span-1">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="text-gold-500 text-3xl font-extrabold italic tracking-tighter">TT</div>
+                        <div class="text-xl font-bold text-white">Teman <span class="text-gold-500">Transindo</span></div>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">Sewa Hiace & Paket Tour terpercaya untuk perjalanan nyaman, aman, dan tanpa stress.</p>
+                </div>
+                <div>
+                    <h5 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Tautan</h5>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#home" class="text-gray-400 hover:text-gold-500 transition">Home</a></li>
+                        <li><a href="#armada" class="text-gray-400 hover:text-gold-500 transition">Armada</a></li>
+                        <li><a href="#layanan" class="text-gray-400 hover:text-gold-500 transition">Layanan</a></li>
+                        <li><a href="#paket" class="text-gray-400 hover:text-gold-500 transition">Paket Wisata</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Media Sosial</h5>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#" class="flex items-center gap-3 text-gray-400 hover:text-gold-500 transition"><i class="fa-brands fa-instagram text-lg w-6"></i> @temantransindo</a></li>
+                        <li><a href="#" class="flex items-center gap-3 text-gray-400 hover:text-gold-500 transition"><i class="fa-brands fa-tiktok text-lg w-6"></i> @temantransindo</a></li>
+                        <li><a href="#" class="flex items-center gap-3 text-gray-400 hover:text-gold-500 transition"><i class="fa-brands fa-youtube text-lg w-6"></i> Teman Transindo</a></li>
+                        <li><a href="#" class="flex items-center gap-3 text-gray-400 hover:text-gold-500 transition"><i class="fa-brands fa-facebook text-lg w-6"></i> Teman Transindo</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Kontak</h5>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start gap-3 text-gray-400">
+                            <i class="fa-solid fa-envelope text-gold-500 w-6 mt-1"></i>
+                            <a href="mailto:temantransindo@gmail.com" class="hover:text-gold-500 transition">temantransindo@gmail.com</a>
+                        </li>
+                        <li class="flex items-start gap-3 text-gray-400">
+                            <i class="fa-brands fa-whatsapp text-green-500 w-6 mt-1"></i>
+                            <a href="https://wa.me/6281234567890" class="hover:text-gold-500 transition">+62 812-3456-7890</a>
+                        </li>
+                        <li class="flex items-start gap-3 text-gray-400">
+                            <i class="fa-solid fa-location-dot text-gold-500 w-6 mt-1"></i>
+                            <span>Jl. Raya Cilegon No. 123, Banten</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800/60 pt-8 text-center text-gray-500 text-sm">
+                &copy; 2026 <span class="text-gold-500">Teman Transindo</span>. All rights reserved. Made with <i class="fa-solid fa-heart text-red-500 mx-1"></i> in Cilegon.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== ADMIN MODAL ===== -->
+    <div id="adminModal" class="fixed inset-0 z-[999] hidden admin-modal-overlay flex items-center justify-center p-4">
+        <div class="bg-dark-800 rounded-2xl max-w-4xl w-full max-h-[90vh] admin-modal-content border border-gold-500/20 shadow-2xl p-6 md:p-8 relative">
+            <button id="closeAdminModal" class="absolute top-4 right-4 text-gray-400 hover:text-white transition text-2xl"><i class="fa-solid fa-xmark"></i></button>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-2">Panel Admin <span class="text-gold-500">Teman Transindo</span></h2>
+            <p class="text-gray-400 text-sm mb-6">Kelola jadwal unit dan gambar armada secara real-time. Perubahan disimpan di browser Anda.</p>
+
+            <!-- Tab navigation -->
+            <div class="flex border-b border-gray-700 mb-6 gap-4 text-sm font-semibold">
+                <button class="admin-tab active text-gold-500 border-b-2 border-gold-500 pb-2 px-1" data-tab="jadwal">Jadwal Unit</button>
+                <button class="admin-tab text-gray-400 hover:text-white pb-2 px-1" data-tab="gambar">Gambar Armada</button>
+            </div>
+
+            <!-- Tab content: Jadwal -->
+            <div id="tabJadwal" class="admin-tab-content">
+                <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+                    <h3 class="text-white font-bold text-lg">Edit Status Ketersediaan</h3>
+                    <button id="saveJadwalBtn" class="bg-gold-500 hover:bg-gold-400 text-dark-900 px-5 py-2 rounded-xl font-bold transition flex items-center gap-2">
+                        <i class="fa-solid fa-floppy-disk"></i> Simpan Perubahan
+                    </button>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left text-gray-400">
+                        <thead class="text-xs uppercase bg-dark-700/50 text-gray-300">
+                            <tr>
+                                <th class="px-4 py-3 rounded-l-lg">Tanggal</th>
+                                <th class="px-4 py-3">Status</th>
+                                <th class="px-4 py-3 rounded-r-lg">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminJadwalTableBody">
+                            <!-- JS generates rows -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mt-3 text-xs text-gray-500">* Klik "Simpan Perubahan" untuk menyimpan ke penyimpanan lokal.</div>
+            </div>
+
+            <!-- Tab content: Gambar -->
+            <div id="tabGambar" class="admin-tab-content hidden">
+                <h3 class="text-white font-bold text-lg mb-4">Ganti Gambar Armada</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-gray-300 text-sm font-medium mb-2">Pilih Armada</label>
+                        <select id="armadaSelect" class="w-full bg-dark-700 border border-gray-600 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-gold-500">
+                            <option value="premium">Hiace Premium</option>
+                            <option value="executive">Hiace Executive</option>
+                            <option value="touring">Hiace Touring</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-gray-300 text-sm font-medium mb-2">URL Gambar Baru</label>
+                        <input type="text" id="imageUrlInput" placeholder="https://example.com/gambar.jpg" class="w-full bg-dark-700 border border-gray-600 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-gold-500" />
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center gap-4">
+                    <button id="updateImageBtn" class="bg-gold-500 hover:bg-gold-400 text-dark-900 px-6 py-2.5 rounded-xl font-bold transition flex items-center gap-2">
+                        <i class="fa-solid fa-rotate"></i> Update Gambar
+                    </button>
+                    <span id="imageUpdateStatus" class="text-sm text-gray-400"></span>
+                </div>
+                <div class="mt-6">
+                    <p class="text-gray-400 text-sm">Preview gambar yang dipilih:</p>
+                    <img id="adminImagePreview" src="" alt="Preview" class="mt-2 w-48 h-32 object-cover rounded-xl border border-gray-700" />
+                </div>
+            </div>
+
+            <div class="mt-6 text-xs text-gray-500 border-t border-gray-700 pt-4">
+                <i class="fa-solid fa-info-circle text-gold-500 mr-1"></i> Data disimpan di localStorage browser Anda. Untuk reset, hapus data di dev tools.
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // ---------- DATA STORE ----------
+            const STORAGE_KEY = 'temantransindo_data';
+
+            // Default mock data
+            const defaultJadwal = {
+                "2026-08-05": "terbatas",
+                "2026-08-06": "penuh",
+                "2026-08-07": "penuh",
+                "2026-08-14": "terbatas",
+                "2026-08-15": "penuh",
+                "2026-08-16": "penuh",
+                "2026-08-17": "penuh",
+                "2026-08-22": "terbatas",
+                "2026-08-29": "terbatas"
+            };
+
+            const defaultImages = {
+                premium: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=1964&auto=format&fit=crop',
+                executive: 'https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?q=80&w=2069&auto=format&fit=crop',
+                touring: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=2070&auto=format&fit=crop'
+            };
+
+            let jadwalData = {};
+            let armadaImages = {};
+
+            // Load data from localStorage or default
+            function loadData() {
+                const stored = localStorage.getItem(STORAGE_KEY);
+                if (stored) {
+                    try {
+                        const parsed = JSON.parse(stored);
+                        jadwalData = parsed.jadwal || { ...defaultJadwal };
+                        armadaImages = parsed.images || { ...defaultImages };
+                    } catch (e) {
+                        resetToDefault();
+                    }
+                } else {
+                    resetToDefault();
+                }
+                // Ensure all default dates exist in jadwalData (for admin table)
+                // We'll merge but keep existing statuses
+                Object.keys(defaultJadwal).forEach(date => {
+                    if (!(date in jadwalData)) {
+                        jadwalData[date] = defaultJadwal[date];
+                    }
+                });
+                // Ensure all armada ids have images
+                Object.keys(defaultImages).forEach(id => {
+                    if (!(id in armadaImages)) {
+                        armadaImages[id] = defaultImages[id];
+                    }
+                });
+            }
+
+            function resetToDefault() {
+                jadwalData = { ...defaultJadwal };
+                armadaImages = { ...defaultImages };
+            }
+
+            function saveData() {
+                const toStore = {
+                    jadwal: jadwalData,
+                    images: armadaImages
+                };
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(toStore));
+            }
+
+            loadData();
+
+            // ---------- RENDER CALENDAR ----------
+            const monthYearDisplay = document.getElementById('monthYearDisplay');
+            const calendarGrid = document.getElementById('calendarGrid');
+            const prevMonthBtn = document.getElementById('prevMonth');
+            const nextMonthBtn = document.getElementById('nextMonth');
+
+            let currentDate = new Date(2026, 7, 1);
+            const monthNames = ["JANUARI", "FEBRUARI", "MARET", "APRIL", "MEI", "JUNI", "JULI", "AGUSTUS", "SEPTEMBER",
+                "OKTOBER", "NOVEMBER", "DESEMBER"
+            ];
+
+            function renderCalendar() {
+                calendarGrid.innerHTML = '';
+                const year = currentDate.getFullYear();
+                const month = currentDate.getMonth();
+                monthYearDisplay.textContent = `${monthNames[month]} ${year}`;
+
+                const firstDayIndex = new Date(year, month, 1).getDay();
+                const lastDay = new Date(year, month + 1, 0).getDate();
+
+                for (let i = 0; i < firstDayIndex; i++) {
+                    const empty = document.createElement('div');
+                    empty.className = 'p-2 md:p-3 bg-dark-900/30 rounded-lg';
+                    calendarGrid.appendChild(empty);
+                }
+
+                for (let i = 1; i <= lastDay; i++) {
+                    const dayDiv = document.createElement('div');
+                    dayDiv.className =
+                        'relative p-2 md:p-3 rounded-lg bg-dark-700/60 border border-gray-700/50 hover:border-gold-500/40 transition cursor-pointer group flex flex-col items-center justify-center';
+
+                    const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+                    const status = jadwalData[dateStr] || "tersedia";
+
+                    let color = 'bg-green-500';
+                    let shadow = 'group-hover:shadow-[0_0_16px_rgba(34,197,94,0.3)]';
+                    if (status === 'terbatas') { color = 'bg-yellow-500';
+                        shadow = 'group-hover:shadow-[0_0_16px_rgba(234,179,8,0.3)]'; }
+                    if (status === 'penuh') { color = 'bg-red-500';
+                        shadow = 'group-hover:shadow-[0_0_16px_rgba(239,68,68,0.3)]';
+                        dayDiv.classList.add('opacity-50'); }
+
+                    dayDiv.classList.add(shadow);
+                    dayDiv.innerHTML = `
+                        <span class="text-sm md:text-lg font-bold text-white mb-1.5">${i}</span>
+                        <div class="w-2.5 h-2.5 md:w-3.5 md:h-3.5 rounded-full ${color} shadow-inner"></div>
+                    `;
+
+                    dayDiv.addEventListener('click', () => {
+                        const statusMap = { 'tersedia': 'Tersedia. Hubungi kami untuk booking!',
+                            'terbatas': 'Terbatas! Segera booking sebelum kehabisan.',
+                        'penuh': 'Maaf, sudah penuh / booked.' };
+                        alert(`Tanggal ${i} ${monthNames[month]} ${year}: ${statusMap[status] || 'Tersedia'}`);
+                    });
+
+                    calendarGrid.appendChild(dayDiv);
+                }
+            }
+
+            prevMonthBtn.addEventListener('click', () => { currentDate.setMonth(currentDate.getMonth() - 1);
+                renderCalendar(); });
+            nextMonthBtn.addEventListener('click', () => { currentDate.setMonth(currentDate.getMonth() + 1);
+                renderCalendar(); });
+
+            renderCalendar();
+
+            // ---------- RENDER ARMADA IMAGES ----------
+            function renderArmadaImages() {
+                document.querySelectorAll('[data-armada-id]').forEach(card => {
+                    const id = card.dataset.armadaId;
+                    const img = card.querySelector('.armada-img');
+                    if (img && armadaImages[id]) {
+                        img.src = armadaImages[id];
+                    }
+                });
+            }
+            renderArmadaImages();
+
+            // ---------- ADMIN PANEL ----------
+            const adminModal = document.getElementById('adminModal');
+            const closeAdminBtn = document.getElementById('closeAdminModal');
+            const adminTrigger = document.getElementById('adminTrigger');
+            let clickCount = 0;
+            let clickTimer = null;
+
+            adminTrigger.addEventListener('click', function(e) {
+                e.preventDefault();
+                clickCount++;
+                if (clickTimer) clearTimeout(clickTimer);
+                clickTimer = setTimeout(() => { clickCount = 0; }, 1000);
+                if (clickCount === 5) {
+                    clickCount = 0;
+                    // Prompt password
+                    const pass = prompt('Masukkan password admin:', '');
+                    if (pass === 'admin123') {
+                        openAdminPanel();
+                    } else if (pass !== null) {
+                        alert('Password salah!');
+                    }
+                }
+            });
+
+            function openAdminPanel() {
+                adminModal.classList.remove('hidden');
+                adminModal.classList.add('flex');
+                populateAdminTable();
+                // Set preview image
+                const select = document.getElementById('armadaSelect');
+                const preview = document.getElementById('adminImagePreview');
+                preview.src = armadaImages[select.value] || '';
+                document.getElementById('imageUpdateStatus').textContent = '';
+                // Set active tab
+                document.querySelectorAll('.admin-tab-content').forEach(el => el.classList.add('hidden'));
+                document.getElementById('tabJadwal').classList.remove('hidden');
+                document.querySelectorAll('.admin-tab').forEach(tab => tab.classList.remove('active', 'text-gold-500',
+                'border-gold-500'));
+                document.querySelector('.admin-tab[data-tab="jadwal"]').classList.add('active', 'text-gold-500',
+                    'border-b-2', 'border-gold-500');
+            }
+
+            closeAdminBtn.addEventListener('click', function() {
+                adminModal.classList.add('hidden');
+                adminModal.classList.remove('flex');
+            });
+
+            // Close modal on backdrop click
+            adminModal.addEventListener('click', function(e) {
+                if (e.target === adminModal) {
+                    adminModal.classList.add('hidden');
+                    adminModal.classList.remove('flex');
+                }
+            });
+
+            // Tab switching
+            document.querySelectorAll('.admin-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const target = this.dataset.tab;
+                    document.querySelectorAll('.admin-tab-content').forEach(el => el.classList.add('hidden'));
+                    document.getElementById('tab' + target.charAt(0).toUpperCase() + target.slice(1)).classList
+                        .remove('hidden');
+                    document.querySelectorAll('.admin-tab').forEach(t => {
+                        t.classList.remove('active', 'text-gold-500', 'border-b-2', 'border-gold-500');
+                        t.classList.add('text-gray-400');
+                    });
+                    this.classList.add('active', 'text-gold-500', 'border-b-2', 'border-gold-500');
+                    this.classList.remove('text-gray-400');
+                    // Update preview when switching to gambar tab
+                    if (target === 'gambar') {
+                        const select = document.getElementById('armadaSelect');
+                        const preview = document.getElementById('adminImagePreview');
+                        preview.src = armadaImages[select.value] || '';
+                    }
+                });
+            });
+
+            // Populate admin jadwal table
+            function populateAdminTable() {
+                const tbody = document.getElementById('adminJadwalTableBody');
+                tbody.innerHTML = '';
+                const year = currentDate.getFullYear();
+                const month = currentDate.getMonth();
+                const lastDay = new Date(year, month + 1, 0).getDate();
+
+                for (let i = 1; i <= lastDay; i++) {
+                    const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+                    const status = jadwalData[dateStr] || 'tersedia';
+                    const tr = document.createElement('tr');
+                    tr.className = 'border-b border-gray-700/50 hover:bg-dark-700/30';
+                    tr.innerHTML = `
+                        <td class="px-4 py-3 text-white font-medium">${i} ${monthNames[month]} ${year}</td>
+                        <td class="px-4 py-3">
+                            <select class="status-select bg-dark-700 border border-gray-600 text-white rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:border-gold-500" data-date="${dateStr}">
+                                <option value="tersedia" ${status === 'tersedia' ? 'selected' : ''}>Tersedia</option>
+                                <option value="terbatas" ${status === 'terbatas' ? 'selected' : ''}>Terbatas</option>
+                                <option value="penuh" ${status === 'penuh' ? 'selected' : ''}>Penuh</option>
+                            </select>
+                        </td>
+                        <td class="px-4 py-3">
+                            <span class="status-badge status-${status}">${status}</span>
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                }
+            }
+
+            // Save jadwal changes
+            document.getElementById('saveJadwalBtn').addEventListener('click', function() {
+                const selects = document.querySelectorAll('#adminJadwalTableBody .status-select');
+                selects.forEach(sel => {
+                    const date = sel.dataset.date;
+                    jadwalData[date] = sel.value;
+                });
+                saveData();
+                renderCalendar();
+                populateAdminTable(); // refresh status badges
+                alert('Jadwal berhasil disimpan!');
+            });
+
+            // Update image
+            document.getElementById('updateImageBtn').addEventListener('click', function() {
+                const select = document.getElementById('armadaSelect');
+                const urlInput = document.getElementById('imageUrlInput');
+                const preview = document.getElementById('adminImagePreview');
+                const statusMsg = document.getElementById('imageUpdateStatus');
+                const newUrl = urlInput.value.trim();
+                if (!newUrl) {
+                    statusMsg.textContent = 'Masukkan URL gambar terlebih dahulu.';
+                    statusMsg.className = 'text-red-400 text-sm';
+                    return;
+                }
+                // Validate URL (simple)
+                try {
+                    new URL(newUrl);
+                } catch (e) {
+                    statusMsg.textContent = 'URL tidak valid.';
+                    statusMsg.className = 'text-red-400 text-sm';
+                    return;
+                }
+                const id = select.value;
+                armadaImages[id] = newUrl;
+                saveData();
+                renderArmadaImages();
+                preview.src = newUrl;
+                statusMsg.textContent = 'Gambar berhasil diperbarui!';
+                statusMsg.className = 'text-green-400 text-sm';
+                urlInput.value = '';
+            });
+
+            // Preview on armada select change
+            document.getElementById('armadaSelect').addEventListener('change', function() {
+                const preview = document.getElementById('adminImagePreview');
+                preview.src = armadaImages[this.value] || '';
+            });
+
+            // ---------- MOBILE MENU ----------
+            const mobileBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+                const icon = mobileBtn.querySelector('i');
+                if (mobileMenu.classList.contains('hidden')) {
+                    icon.className = 'fa-solid fa-bars';
+                } else {
+                    icon.className = 'fa-solid fa-xmark';
+                }
+            });
+
+            // ---------- NAVBAR SCROLL ----------
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('bg-dark-900/95');
+                    navbar.classList.remove('glass-panel');
+                } else {
+                    navbar.classList.remove('bg-dark-900/95');
+                    navbar.classList.add('glass-panel');
+                }
+            });
+
+            // ---------- INITIAL LOAD: sync admin table if open ----------
+            // (already done)
+        });
+    </script>
+
+</body>
+</html>
